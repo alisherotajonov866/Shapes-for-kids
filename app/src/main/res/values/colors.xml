@@ -3,6 +3,7 @@
     <color name="component_color_light">#1b749e</color>
     <color name="component_color_night">#78b3d0</color>
     <color name="background_night">#fcf2d9</color>
+    <color name="background_startButton">#fcf2d9</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
