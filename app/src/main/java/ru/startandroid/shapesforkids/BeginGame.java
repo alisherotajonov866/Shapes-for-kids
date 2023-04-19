@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,15 +64,11 @@ public class BeginGame extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_begin_game, container, false);
 
-        CardView cardView = root.findViewById(R.id.start_button);
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PlayingGame playingGame = new PlayingGame();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.container, playingGame).addToBackStack(playingGame.toString()).commit();
-
-            }
+        Button btnStart = root.findViewById(R.id.btnStart);
+        btnStart.setOnClickListener(v -> {
+            PlayingGame playingGame = new PlayingGame();
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, playingGame).addToBackStack(playingGame.toString()).commit();
         });
 
 
