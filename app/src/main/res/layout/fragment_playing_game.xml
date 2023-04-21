@@ -1,40 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_night"
+    android:orientation="vertical"
     tools:context=".PlayingGame">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:id="@+id/ansver"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/moonkids_personal"
-        android:gravity="center"
-        android:text="Shakllar nomini bilib oling"
-        android:textColor="#D80B0B"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        tools:ignore="HardcodedText,MissingConstraints,UsingOnClickInXml" />
+        android:layout_margin="25dp">
+
+        <TextView
+            android:id="@+id/tvAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/moonkids_personal"
+            android:gravity="center"
+            android:text="Biror shakl ustiga bosing!"
+            android:textColor="#D80B0B"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,MissingConstraints,UsingOnClickInXml" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAnswer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvAnswer" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:id="@+id/shapeList"
+        android:id="@+id/lvShapeList"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="match_parent"
         android:layout_gravity="bottom|center"
+        android:layout_marginBottom="25dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginBottom="25dp"
         android:padding="7dp">
 
 
         <ImageView
-            android:id="@+id/shape1"
+            android:id="@+id/ivShape1"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="bottom|center"
@@ -43,7 +61,7 @@
             tools:ignore="ContentDescription,MissingConstraints,UsingOnClickInXml" />
 
         <ImageView
-            android:id="@+id/shape2"
+            android:id="@+id/ivShape2"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="top|center"
@@ -51,7 +69,7 @@
             tools:ignore="ContentDescription,MissingConstraints,UsingOnClickInXml" />
 
         <ImageView
-            android:id="@+id/shape3"
+            android:id="@+id/ivShape3"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="bottom|center"
@@ -63,4 +81,4 @@
     </LinearLayout>
 
 
-</FrameLayout>
+</LinearLayout>

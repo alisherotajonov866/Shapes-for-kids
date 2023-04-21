@@ -35,7 +35,12 @@ public class BeginGame extends Fragment {
         binding = FragmentBeginGameBinding.inflate(inflater, container, false);
 
         // add animation to navOptions object
-        NavOptions navOptions = new NavOptions.Builder().setEnterAnim(R.anim.enter).setExitAnim(R.anim.exit).setPopEnterAnim(R.anim.pop_enter).setPopExitAnim(R.anim.pop_exit).build();
+        NavOptions navOptions = new NavOptions.Builder()
+                .setEnterAnim(R.anim.enter)
+                .setExitAnim(R.anim.exit)
+                .setPopEnterAnim(R.anim.pop_enter)
+                .setPopExitAnim(R.anim.pop_exit)
+                .build();
 
         binding.btnStart.setOnClickListener(v -> {
             // go another fragment
