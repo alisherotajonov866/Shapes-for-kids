@@ -1,15 +1,19 @@
 package ru.startandroid.shapesforkids;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import ru.startandroid.shapesforkids.databinding.FragmentPlayingGameBinding;
 
@@ -56,51 +60,59 @@ public class PlayingGame extends Fragment {
     }
 
     private void generateShapes() {
+        Set<Integer> randomContainer = new HashSet<>();
 
         for (ImageView shape : shapes) {
-            int random = (int) (Math.random()*6);
-            switch (random) {
-                case 0:
-                    shape.setImageResource(shapesMap.get("circle"));
-                    shape.setOnClickListener(v -> {
-                    binding.tvAnswer.setText("Aylana");
-                });
-                    break;
-
-                case 1:
-                    shape.setImageResource(shapesMap.get("polygon"));
-                    shape.setOnClickListener(v -> {
-                    binding.tvAnswer.setText("oltiburchak");
-                });
-                    break;
-                case 2:
-                    shape.setImageResource(shapesMap.get("triangle"));
-                    shape.setOnClickListener(v -> {
-                        binding.tvAnswer.setText("uchburchak");
-                    });
-                    break;
-                case 3:
-                    shape.setImageResource(shapesMap.get("rectangle"));
-                    shape.setOnClickListener(v -> {
-                        binding.tvAnswer.setText("to'rtburchak");
-                    });
-                    break;
-                case 4:
-                    shape.setImageResource(shapesMap.get("star"));
-                    shape.setOnClickListener(v -> {
-                        binding.tvAnswer.setText("yulduzcha");
-                    });
-                    break;
-                case 5:
-                    shape.setImageResource(shapesMap.get("pentagon"));
-                    shape.setOnClickListener(v -> {
-                        binding.tvAnswer.setText("beshburchak");
-                    });
-
+            int random = (int) (Math.random() * 6);
+            while (!randomContainer.add(random)) {
+                random = (int) (Math.random() * 6);
             }
-
+            switchMethod(shape, random);
         }
 
+        randomContainer.clear();
+    }
+
+
+    private void switchMethod(ImageView shape, Integer random) {
+        switch (random) {
+            case 0:
+                shape.setImageResource(shapesMap.get("circle"));
+                shape.setOnClickListener(v -> {
+                    binding.tvAnswer.setText("Aylana");
+                });
+                break;
+
+            case 1:
+                shape.setImageResource(shapesMap.get("polygon"));
+                shape.setOnClickListener(v -> {
+                    binding.tvAnswer.setText("oltiburchak");
+                });
+                break;
+            case 2:
+                shape.setImageResource(shapesMap.get("triangle"));
+                shape.setOnClickListener(v -> {
+                    binding.tvAnswer.setText("uchburchak");
+                });
+                break;
+            case 3:
+                shape.setImageResource(shapesMap.get("rectangle"));
+                shape.setOnClickListener(v -> {
+                    binding.tvAnswer.setText("to'rtburchak");
+                });
+                break;
+            case 4:
+                shape.setImageResource(shapesMap.get("star"));
+                shape.setOnClickListener(v -> {
+                    binding.tvAnswer.setText("yulduzcha");
+                });
+                break;
+            case 5:
+                shape.setImageResource(shapesMap.get("pentagon"));
+                shape.setOnClickListener(v -> {
+                    binding.tvAnswer.setText("beshburchak");
+                });
+        }
     }
 
     // we had better write these codes for onDestroyView
