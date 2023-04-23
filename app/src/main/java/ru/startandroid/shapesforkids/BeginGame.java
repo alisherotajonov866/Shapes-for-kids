@@ -1,5 +1,7 @@
 package ru.startandroid.shapesforkids;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -11,6 +13,8 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import ru.startandroid.shapesforkids.databinding.FragmentBeginGameBinding;
@@ -34,6 +38,8 @@ public class BeginGame extends Fragment {
 
         binding = FragmentBeginGameBinding.inflate(inflater, container, false);
 
+        startPulseAnimation(binding.btnStart);
+
         // add animation to navOptions object
         NavOptions navOptions = new NavOptions.Builder()
                 .setEnterAnim(R.anim.enter)
@@ -49,6 +55,17 @@ public class BeginGame extends Fragment {
 
         return binding.getRoot();
     }
+
+    private void startPulseAnimation(Button button) {
+        ObjectAnimator pulseAnimator = ObjectAnimator.ofPropertyValuesHolder(button,
+                PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.2f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.2f));
+        pulseAnimator.setDuration(350);
+        pulseAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+        pulseAnimator.setRepeatMode(ObjectAnimator.REVERSE);
+        pulseAnimator.start();
+    }
+
 
     // we had better write these codes for onDestroyView
     @Override
